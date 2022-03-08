@@ -12,7 +12,7 @@ static TL_PARAM_TEST(check_suffix_ordered_for_construction,
 {
     TL_BEGIN();
     cstr_exact_matcher *m = cstr_st_exact_search(st, CSTR_SLICE_STRING((const char *)""));
-    
+
     long long count = 1;
     cstr_const_sslice prev = CSTR_SUFFIX(x, cstr_exact_next_match(m));
     for (long long suf_idx = cstr_exact_next_match(m);
@@ -70,11 +70,13 @@ int main(void)
 {
     TL_BEGIN_TEST_SUITE("suffix tree test");
     // Unit tests
+#ifdef GEN_UNIT_TESTS // unit testing of static functions...
     TL_RUN_TEST(st_constructing_leaves);
     TL_RUN_TEST(st_constructing_inner_nodes);
     TL_RUN_TEST(st_attempted_scans);
     TL_RUN_TEST(st_dft);
     TL_RUN_TEST(st_search);
+#endif
 
     // Interface tests
     TL_RUN_TEST(check_suffix_ordered);

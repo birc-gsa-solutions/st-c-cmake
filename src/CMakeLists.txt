@@ -9,5 +9,6 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
   add_subdirectory(test)
 endif(CMAKE_BUILD_TYPE MATCHES Debug)
 
-add_subdirectory(src)
+add_subdirectory(cstr)
+add_subdirectory(test)
 

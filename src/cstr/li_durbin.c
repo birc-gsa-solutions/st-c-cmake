@@ -439,9 +439,9 @@ static void edits_to_cigar(char *cigar_buf, cstr_const_sslice edits)
 }
 
 static cstr_approx_match rec_search(long long left, long long right,
-                               long long i, long long d,
-                               cstr_sslice_buf_slice edits,
-                               context *context)
+                                    long long i, long long d,
+                                    cstr_sslice_buf_slice edits,
+                                    context *context)
 {
     if (left >= right || d < 0)
     {
@@ -502,7 +502,6 @@ cstr_approx_matcher *cstr_li_durbin_search(cstr_li_durbin_preproc *preproc,
 
     return itr;
 }
-
 
 void cstr_free_approx_matcher(cstr_approx_matcher *matcher)
 {

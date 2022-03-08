@@ -57,10 +57,10 @@ RM = /usr/local/Cellar/cmake/3.22.2/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/mailund/Projects/cstr
+CMAKE_SOURCE_DIR = /Users/mailund/Classroom/solutions/gsa/st-c-cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/mailund/Projects/cstr
+CMAKE_BINARY_DIR = /Users/mailund/Classroom/solutions/gsa/st-c-cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,7 +78,7 @@ test/fast: test
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.21.3/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/local/Cellar/cmake/3.22.2/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -142,14 +142,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/mailund/Projects/cstr && $(CMAKE_COMMAND) -E cmake_progress_start /Users/mailund/Projects/cstr/CMakeFiles /Users/mailund/Projects/cstr/test//CMakeFiles/progress.marks
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mailund/Projects/cstr/CMakeFiles 0
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/mailund/Classroom/solutions/gsa/st-c-cmake/CMakeFiles /Users/mailund/Classroom/solutions/gsa/st-c-cmake/src/test//CMakeFiles/progress.marks
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mailund/Classroom/solutions/gsa/st-c-cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/clean
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/clean
 .PHONY : clean
 
 # The main clean target
@@ -158,123 +158,179 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/preinstall
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/preinstall
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/mailund/Projects/cstr && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-test/CMakeFiles/testlib.dir/rule:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/testlib.dir/rule
-.PHONY : test/CMakeFiles/testlib.dir/rule
+src/test/CMakeFiles/testlib.dir/rule:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/testlib.dir/rule
+.PHONY : src/test/CMakeFiles/testlib.dir/rule
 
 # Convenience name for target.
-testlib: test/CMakeFiles/testlib.dir/rule
+testlib: src/test/CMakeFiles/testlib.dir/rule
 .PHONY : testlib
 
 # fast build rule for target.
 testlib/fast:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/testlib.dir/build.make test/CMakeFiles/testlib.dir/build
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/testlib.dir/build.make src/test/CMakeFiles/testlib.dir/build
 .PHONY : testlib/fast
 
 # Convenience name for target.
-test/CMakeFiles/alphabet_test.dir/rule:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/alphabet_test.dir/rule
-.PHONY : test/CMakeFiles/alphabet_test.dir/rule
+src/test/CMakeFiles/alphabet_test.dir/rule:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/alphabet_test.dir/rule
+.PHONY : src/test/CMakeFiles/alphabet_test.dir/rule
 
 # Convenience name for target.
-alphabet_test: test/CMakeFiles/alphabet_test.dir/rule
+alphabet_test: src/test/CMakeFiles/alphabet_test.dir/rule
 .PHONY : alphabet_test
 
 # fast build rule for target.
 alphabet_test/fast:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/alphabet_test.dir/build.make test/CMakeFiles/alphabet_test.dir/build
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/alphabet_test.dir/build.make src/test/CMakeFiles/alphabet_test.dir/build
 .PHONY : alphabet_test/fast
 
 # Convenience name for target.
-test/CMakeFiles/bwt_test.dir/rule:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/bwt_test.dir/rule
-.PHONY : test/CMakeFiles/bwt_test.dir/rule
+src/test/CMakeFiles/bit_vector_test.dir/rule:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/bit_vector_test.dir/rule
+.PHONY : src/test/CMakeFiles/bit_vector_test.dir/rule
 
 # Convenience name for target.
-bwt_test: test/CMakeFiles/bwt_test.dir/rule
+bit_vector_test: src/test/CMakeFiles/bit_vector_test.dir/rule
+.PHONY : bit_vector_test
+
+# fast build rule for target.
+bit_vector_test/fast:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bit_vector_test.dir/build.make src/test/CMakeFiles/bit_vector_test.dir/build
+.PHONY : bit_vector_test/fast
+
+# Convenience name for target.
+src/test/CMakeFiles/bwt_test.dir/rule:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/bwt_test.dir/rule
+.PHONY : src/test/CMakeFiles/bwt_test.dir/rule
+
+# Convenience name for target.
+bwt_test: src/test/CMakeFiles/bwt_test.dir/rule
 .PHONY : bwt_test
 
 # fast build rule for target.
 bwt_test/fast:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/bwt_test.dir/build.make test/CMakeFiles/bwt_test.dir/build
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bwt_test.dir/build.make src/test/CMakeFiles/bwt_test.dir/build
 .PHONY : bwt_test/fast
 
 # Convenience name for target.
-test/CMakeFiles/cstr_test.dir/rule:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/cstr_test.dir/rule
-.PHONY : test/CMakeFiles/cstr_test.dir/rule
+src/test/CMakeFiles/cstr_test.dir/rule:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/cstr_test.dir/rule
+.PHONY : src/test/CMakeFiles/cstr_test.dir/rule
 
 # Convenience name for target.
-cstr_test: test/CMakeFiles/cstr_test.dir/rule
+cstr_test: src/test/CMakeFiles/cstr_test.dir/rule
 .PHONY : cstr_test
 
 # fast build rule for target.
 cstr_test/fast:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/cstr_test.dir/build.make test/CMakeFiles/cstr_test.dir/build
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/cstr_test.dir/build.make src/test/CMakeFiles/cstr_test.dir/build
 .PHONY : cstr_test/fast
 
 # Convenience name for target.
-test/CMakeFiles/exact_test.dir/rule:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/exact_test.dir/rule
-.PHONY : test/CMakeFiles/exact_test.dir/rule
+src/test/CMakeFiles/exact_test.dir/rule:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/exact_test.dir/rule
+.PHONY : src/test/CMakeFiles/exact_test.dir/rule
 
 # Convenience name for target.
-exact_test: test/CMakeFiles/exact_test.dir/rule
+exact_test: src/test/CMakeFiles/exact_test.dir/rule
 .PHONY : exact_test
 
 # fast build rule for target.
 exact_test/fast:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/exact_test.dir/build.make test/CMakeFiles/exact_test.dir/build
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/exact_test.dir/build.make src/test/CMakeFiles/exact_test.dir/build
 .PHONY : exact_test/fast
 
 # Convenience name for target.
-test/CMakeFiles/sa_test.dir/rule:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/sa_test.dir/rule
-.PHONY : test/CMakeFiles/sa_test.dir/rule
+src/test/CMakeFiles/li_durbin_test.dir/rule:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/li_durbin_test.dir/rule
+.PHONY : src/test/CMakeFiles/li_durbin_test.dir/rule
 
 # Convenience name for target.
-sa_test: test/CMakeFiles/sa_test.dir/rule
+li_durbin_test: src/test/CMakeFiles/li_durbin_test.dir/rule
+.PHONY : li_durbin_test
+
+# fast build rule for target.
+li_durbin_test/fast:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/li_durbin_test.dir/build.make src/test/CMakeFiles/li_durbin_test.dir/build
+.PHONY : li_durbin_test/fast
+
+# Convenience name for target.
+src/test/CMakeFiles/sa_test.dir/rule:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/sa_test.dir/rule
+.PHONY : src/test/CMakeFiles/sa_test.dir/rule
+
+# Convenience name for target.
+sa_test: src/test/CMakeFiles/sa_test.dir/rule
 .PHONY : sa_test
 
 # fast build rule for target.
 sa_test/fast:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/sa_test.dir/build.make test/CMakeFiles/sa_test.dir/build
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/sa_test.dir/build.make src/test/CMakeFiles/sa_test.dir/build
 .PHONY : sa_test/fast
 
 # Convenience name for target.
-test/CMakeFiles/skew_test.dir/rule:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/skew_test.dir/rule
-.PHONY : test/CMakeFiles/skew_test.dir/rule
+src/test/CMakeFiles/sais_test.dir/rule:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/sais_test.dir/rule
+.PHONY : src/test/CMakeFiles/sais_test.dir/rule
 
 # Convenience name for target.
-skew_test: test/CMakeFiles/skew_test.dir/rule
+sais_test: src/test/CMakeFiles/sais_test.dir/rule
+.PHONY : sais_test
+
+# fast build rule for target.
+sais_test/fast:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/sais_test.dir/build.make src/test/CMakeFiles/sais_test.dir/build
+.PHONY : sais_test/fast
+
+# Convenience name for target.
+src/test/CMakeFiles/skew_test.dir/rule:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/skew_test.dir/rule
+.PHONY : src/test/CMakeFiles/skew_test.dir/rule
+
+# Convenience name for target.
+skew_test: src/test/CMakeFiles/skew_test.dir/rule
 .PHONY : skew_test
 
 # fast build rule for target.
 skew_test/fast:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/skew_test.dir/build.make test/CMakeFiles/skew_test.dir/build
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/skew_test.dir/build.make src/test/CMakeFiles/skew_test.dir/build
 .PHONY : skew_test/fast
+
+# Convenience name for target.
+src/test/CMakeFiles/suffix_tree_test.dir/rule:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/suffix_tree_test.dir/rule
+.PHONY : src/test/CMakeFiles/suffix_tree_test.dir/rule
+
+# Convenience name for target.
+suffix_tree_test: src/test/CMakeFiles/suffix_tree_test.dir/rule
+.PHONY : suffix_tree_test
+
+# fast build rule for target.
+suffix_tree_test/fast:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/suffix_tree_test.dir/build.make src/test/CMakeFiles/suffix_tree_test.dir/build
+.PHONY : suffix_tree_test/fast
 
 alphabet_test.o: alphabet_test.c.o
 .PHONY : alphabet_test.o
 
 # target to build an object file
 alphabet_test.c.o:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/alphabet_test.dir/build.make test/CMakeFiles/alphabet_test.dir/alphabet_test.c.o
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/alphabet_test.dir/build.make src/test/CMakeFiles/alphabet_test.dir/alphabet_test.c.o
 .PHONY : alphabet_test.c.o
 
 alphabet_test.i: alphabet_test.c.i
@@ -282,7 +338,7 @@ alphabet_test.i: alphabet_test.c.i
 
 # target to preprocess a source file
 alphabet_test.c.i:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/alphabet_test.dir/build.make test/CMakeFiles/alphabet_test.dir/alphabet_test.c.i
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/alphabet_test.dir/build.make src/test/CMakeFiles/alphabet_test.dir/alphabet_test.c.i
 .PHONY : alphabet_test.c.i
 
 alphabet_test.s: alphabet_test.c.s
@@ -290,15 +346,39 @@ alphabet_test.s: alphabet_test.c.s
 
 # target to generate assembly for a file
 alphabet_test.c.s:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/alphabet_test.dir/build.make test/CMakeFiles/alphabet_test.dir/alphabet_test.c.s
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/alphabet_test.dir/build.make src/test/CMakeFiles/alphabet_test.dir/alphabet_test.c.s
 .PHONY : alphabet_test.c.s
+
+bit_vector_test.o: bit_vector_test.c.o
+.PHONY : bit_vector_test.o
+
+# target to build an object file
+bit_vector_test.c.o:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bit_vector_test.dir/build.make src/test/CMakeFiles/bit_vector_test.dir/bit_vector_test.c.o
+.PHONY : bit_vector_test.c.o
+
+bit_vector_test.i: bit_vector_test.c.i
+.PHONY : bit_vector_test.i
+
+# target to preprocess a source file
+bit_vector_test.c.i:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bit_vector_test.dir/build.make src/test/CMakeFiles/bit_vector_test.dir/bit_vector_test.c.i
+.PHONY : bit_vector_test.c.i
+
+bit_vector_test.s: bit_vector_test.c.s
+.PHONY : bit_vector_test.s
+
+# target to generate assembly for a file
+bit_vector_test.c.s:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bit_vector_test.dir/build.make src/test/CMakeFiles/bit_vector_test.dir/bit_vector_test.c.s
+.PHONY : bit_vector_test.c.s
 
 bwt_test.o: bwt_test.c.o
 .PHONY : bwt_test.o
 
 # target to build an object file
 bwt_test.c.o:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/bwt_test.dir/build.make test/CMakeFiles/bwt_test.dir/bwt_test.c.o
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bwt_test.dir/build.make src/test/CMakeFiles/bwt_test.dir/bwt_test.c.o
 .PHONY : bwt_test.c.o
 
 bwt_test.i: bwt_test.c.i
@@ -306,7 +386,7 @@ bwt_test.i: bwt_test.c.i
 
 # target to preprocess a source file
 bwt_test.c.i:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/bwt_test.dir/build.make test/CMakeFiles/bwt_test.dir/bwt_test.c.i
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bwt_test.dir/build.make src/test/CMakeFiles/bwt_test.dir/bwt_test.c.i
 .PHONY : bwt_test.c.i
 
 bwt_test.s: bwt_test.c.s
@@ -314,7 +394,7 @@ bwt_test.s: bwt_test.c.s
 
 # target to generate assembly for a file
 bwt_test.c.s:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/bwt_test.dir/build.make test/CMakeFiles/bwt_test.dir/bwt_test.c.s
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bwt_test.dir/build.make src/test/CMakeFiles/bwt_test.dir/bwt_test.c.s
 .PHONY : bwt_test.c.s
 
 cstr_test.o: cstr_test.c.o
@@ -322,7 +402,7 @@ cstr_test.o: cstr_test.c.o
 
 # target to build an object file
 cstr_test.c.o:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/cstr_test.dir/build.make test/CMakeFiles/cstr_test.dir/cstr_test.c.o
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/cstr_test.dir/build.make src/test/CMakeFiles/cstr_test.dir/cstr_test.c.o
 .PHONY : cstr_test.c.o
 
 cstr_test.i: cstr_test.c.i
@@ -330,7 +410,7 @@ cstr_test.i: cstr_test.c.i
 
 # target to preprocess a source file
 cstr_test.c.i:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/cstr_test.dir/build.make test/CMakeFiles/cstr_test.dir/cstr_test.c.i
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/cstr_test.dir/build.make src/test/CMakeFiles/cstr_test.dir/cstr_test.c.i
 .PHONY : cstr_test.c.i
 
 cstr_test.s: cstr_test.c.s
@@ -338,7 +418,7 @@ cstr_test.s: cstr_test.c.s
 
 # target to generate assembly for a file
 cstr_test.c.s:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/cstr_test.dir/build.make test/CMakeFiles/cstr_test.dir/cstr_test.c.s
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/cstr_test.dir/build.make src/test/CMakeFiles/cstr_test.dir/cstr_test.c.s
 .PHONY : cstr_test.c.s
 
 exact_test.o: exact_test.c.o
@@ -346,7 +426,7 @@ exact_test.o: exact_test.c.o
 
 # target to build an object file
 exact_test.c.o:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/exact_test.dir/build.make test/CMakeFiles/exact_test.dir/exact_test.c.o
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/exact_test.dir/build.make src/test/CMakeFiles/exact_test.dir/exact_test.c.o
 .PHONY : exact_test.c.o
 
 exact_test.i: exact_test.c.i
@@ -354,7 +434,7 @@ exact_test.i: exact_test.c.i
 
 # target to preprocess a source file
 exact_test.c.i:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/exact_test.dir/build.make test/CMakeFiles/exact_test.dir/exact_test.c.i
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/exact_test.dir/build.make src/test/CMakeFiles/exact_test.dir/exact_test.c.i
 .PHONY : exact_test.c.i
 
 exact_test.s: exact_test.c.s
@@ -362,15 +442,39 @@ exact_test.s: exact_test.c.s
 
 # target to generate assembly for a file
 exact_test.c.s:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/exact_test.dir/build.make test/CMakeFiles/exact_test.dir/exact_test.c.s
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/exact_test.dir/build.make src/test/CMakeFiles/exact_test.dir/exact_test.c.s
 .PHONY : exact_test.c.s
+
+li_durbin_test.o: li_durbin_test.c.o
+.PHONY : li_durbin_test.o
+
+# target to build an object file
+li_durbin_test.c.o:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/li_durbin_test.dir/build.make src/test/CMakeFiles/li_durbin_test.dir/li_durbin_test.c.o
+.PHONY : li_durbin_test.c.o
+
+li_durbin_test.i: li_durbin_test.c.i
+.PHONY : li_durbin_test.i
+
+# target to preprocess a source file
+li_durbin_test.c.i:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/li_durbin_test.dir/build.make src/test/CMakeFiles/li_durbin_test.dir/li_durbin_test.c.i
+.PHONY : li_durbin_test.c.i
+
+li_durbin_test.s: li_durbin_test.c.s
+.PHONY : li_durbin_test.s
+
+# target to generate assembly for a file
+li_durbin_test.c.s:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/li_durbin_test.dir/build.make src/test/CMakeFiles/li_durbin_test.dir/li_durbin_test.c.s
+.PHONY : li_durbin_test.c.s
 
 sa_test.o: sa_test.c.o
 .PHONY : sa_test.o
 
 # target to build an object file
 sa_test.c.o:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/sa_test.dir/build.make test/CMakeFiles/sa_test.dir/sa_test.c.o
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/sa_test.dir/build.make src/test/CMakeFiles/sa_test.dir/sa_test.c.o
 .PHONY : sa_test.c.o
 
 sa_test.i: sa_test.c.i
@@ -378,7 +482,7 @@ sa_test.i: sa_test.c.i
 
 # target to preprocess a source file
 sa_test.c.i:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/sa_test.dir/build.make test/CMakeFiles/sa_test.dir/sa_test.c.i
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/sa_test.dir/build.make src/test/CMakeFiles/sa_test.dir/sa_test.c.i
 .PHONY : sa_test.c.i
 
 sa_test.s: sa_test.c.s
@@ -386,15 +490,39 @@ sa_test.s: sa_test.c.s
 
 # target to generate assembly for a file
 sa_test.c.s:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/sa_test.dir/build.make test/CMakeFiles/sa_test.dir/sa_test.c.s
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/sa_test.dir/build.make src/test/CMakeFiles/sa_test.dir/sa_test.c.s
 .PHONY : sa_test.c.s
+
+sais_test.o: sais_test.c.o
+.PHONY : sais_test.o
+
+# target to build an object file
+sais_test.c.o:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/sais_test.dir/build.make src/test/CMakeFiles/sais_test.dir/sais_test.c.o
+.PHONY : sais_test.c.o
+
+sais_test.i: sais_test.c.i
+.PHONY : sais_test.i
+
+# target to preprocess a source file
+sais_test.c.i:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/sais_test.dir/build.make src/test/CMakeFiles/sais_test.dir/sais_test.c.i
+.PHONY : sais_test.c.i
+
+sais_test.s: sais_test.c.s
+.PHONY : sais_test.s
+
+# target to generate assembly for a file
+sais_test.c.s:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/sais_test.dir/build.make src/test/CMakeFiles/sais_test.dir/sais_test.c.s
+.PHONY : sais_test.c.s
 
 skew_test.o: skew_test.c.o
 .PHONY : skew_test.o
 
 # target to build an object file
 skew_test.c.o:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/skew_test.dir/build.make test/CMakeFiles/skew_test.dir/skew_test.c.o
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/skew_test.dir/build.make src/test/CMakeFiles/skew_test.dir/skew_test.c.o
 .PHONY : skew_test.c.o
 
 skew_test.i: skew_test.c.i
@@ -402,7 +530,7 @@ skew_test.i: skew_test.c.i
 
 # target to preprocess a source file
 skew_test.c.i:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/skew_test.dir/build.make test/CMakeFiles/skew_test.dir/skew_test.c.i
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/skew_test.dir/build.make src/test/CMakeFiles/skew_test.dir/skew_test.c.i
 .PHONY : skew_test.c.i
 
 skew_test.s: skew_test.c.s
@@ -410,15 +538,39 @@ skew_test.s: skew_test.c.s
 
 # target to generate assembly for a file
 skew_test.c.s:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/skew_test.dir/build.make test/CMakeFiles/skew_test.dir/skew_test.c.s
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/skew_test.dir/build.make src/test/CMakeFiles/skew_test.dir/skew_test.c.s
 .PHONY : skew_test.c.s
+
+suffix_tree_test.o: suffix_tree_test.c.o
+.PHONY : suffix_tree_test.o
+
+# target to build an object file
+suffix_tree_test.c.o:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/suffix_tree_test.dir/build.make src/test/CMakeFiles/suffix_tree_test.dir/suffix_tree_test.c.o
+.PHONY : suffix_tree_test.c.o
+
+suffix_tree_test.i: suffix_tree_test.c.i
+.PHONY : suffix_tree_test.i
+
+# target to preprocess a source file
+suffix_tree_test.c.i:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/suffix_tree_test.dir/build.make src/test/CMakeFiles/suffix_tree_test.dir/suffix_tree_test.c.i
+.PHONY : suffix_tree_test.c.i
+
+suffix_tree_test.s: suffix_tree_test.c.s
+.PHONY : suffix_tree_test.s
+
+# target to generate assembly for a file
+suffix_tree_test.c.s:
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/suffix_tree_test.dir/build.make src/test/CMakeFiles/suffix_tree_test.dir/suffix_tree_test.c.s
+.PHONY : suffix_tree_test.c.s
 
 testlib.o: testlib.c.o
 .PHONY : testlib.o
 
 # target to build an object file
 testlib.c.o:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/testlib.dir/build.make test/CMakeFiles/testlib.dir/testlib.c.o
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/testlib.dir/build.make src/test/CMakeFiles/testlib.dir/testlib.c.o
 .PHONY : testlib.c.o
 
 testlib.i: testlib.c.i
@@ -426,7 +578,7 @@ testlib.i: testlib.c.i
 
 # target to preprocess a source file
 testlib.c.i:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/testlib.dir/build.make test/CMakeFiles/testlib.dir/testlib.c.i
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/testlib.dir/build.make src/test/CMakeFiles/testlib.dir/testlib.c.i
 .PHONY : testlib.c.i
 
 testlib.s: testlib.c.s
@@ -434,7 +586,7 @@ testlib.s: testlib.c.s
 
 # target to generate assembly for a file
 testlib.c.s:
-	cd /Users/mailund/Projects/cstr && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/testlib.dir/build.make test/CMakeFiles/testlib.dir/testlib.c.s
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/testlib.dir/build.make src/test/CMakeFiles/testlib.dir/testlib.c.s
 .PHONY : testlib.c.s
 
 # Help Target
@@ -451,15 +603,22 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... alphabet_test"
+	@echo "... bit_vector_test"
 	@echo "... bwt_test"
 	@echo "... cstr_test"
 	@echo "... exact_test"
+	@echo "... li_durbin_test"
 	@echo "... sa_test"
+	@echo "... sais_test"
 	@echo "... skew_test"
+	@echo "... suffix_tree_test"
 	@echo "... testlib"
 	@echo "... alphabet_test.o"
 	@echo "... alphabet_test.i"
 	@echo "... alphabet_test.s"
+	@echo "... bit_vector_test.o"
+	@echo "... bit_vector_test.i"
+	@echo "... bit_vector_test.s"
 	@echo "... bwt_test.o"
 	@echo "... bwt_test.i"
 	@echo "... bwt_test.s"
@@ -469,12 +628,21 @@ help:
 	@echo "... exact_test.o"
 	@echo "... exact_test.i"
 	@echo "... exact_test.s"
+	@echo "... li_durbin_test.o"
+	@echo "... li_durbin_test.i"
+	@echo "... li_durbin_test.s"
 	@echo "... sa_test.o"
 	@echo "... sa_test.i"
 	@echo "... sa_test.s"
+	@echo "... sais_test.o"
+	@echo "... sais_test.i"
+	@echo "... sais_test.s"
 	@echo "... skew_test.o"
 	@echo "... skew_test.i"
 	@echo "... skew_test.s"
+	@echo "... suffix_tree_test.o"
+	@echo "... suffix_tree_test.i"
+	@echo "... suffix_tree_test.s"
 	@echo "... testlib.o"
 	@echo "... testlib.i"
 	@echo "... testlib.s"
@@ -489,6 +657,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/mailund/Projects/cstr && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/mailund/Classroom/solutions/gsa/st-c-cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

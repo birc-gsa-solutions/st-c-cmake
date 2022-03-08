@@ -6,8 +6,8 @@ cmake_install.cmake
 st
 Makefile
 src/Makefile
-src/src/Makefile
-src/src/config.h
+src/cstr/Makefile
+src/cstr/config.h
 
 # Prerequisites
 *.d
