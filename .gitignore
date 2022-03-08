@@ -3,8 +3,12 @@ CMakeFiles/
 CTestTestfile.cmake
 Testing/
 cmake_install.cmake
-example
-    
+st
+Makefile
+src/Makefile
+src/src/Makefile
+src/src/config.h
+
 # Prerequisites
 *.d
 
