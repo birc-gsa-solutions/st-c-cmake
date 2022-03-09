@@ -51,7 +51,6 @@ target_compile_options(${PROJECT_NAME}
         -Wmissing-noreturn
         -Wmissing-prototypes
         -Wno-missing-braces
-        -Wold-style-cast
         -Wshadow
         -Werror
         -Wall

@@ -33,7 +33,6 @@ foreach(test_c ${test_sources})
             -Wmissing-noreturn
             -Wmissing-prototypes
             -Wno-missing-braces
-            -Wold-style-cast
             -Wshadow
             -Werror
             -Wall
