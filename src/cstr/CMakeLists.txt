@@ -48,17 +48,14 @@ target_compile_options(${PROJECT_NAME}
         -Wcast-align
         -Wcast-qual
         -Wconversion
-        -Wexit-time-destructors
-        -Wglobal-constructors
         -Wmissing-noreturn
         -Wmissing-prototypes
         -Wno-missing-braces
         -Wold-style-cast
         -Wshadow
-        -Wweak-vtables
         -Werror
         -Wall
-        #-O3
+        -O3
 )
 
 if(CMAKE_BUILD_TYPE MATCHES Debug)

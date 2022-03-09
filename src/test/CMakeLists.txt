@@ -30,17 +30,14 @@ foreach(test_c ${test_sources})
             -Wcast-align
             -Wcast-qual
             -Wconversion
-            -Wexit-time-destructors
-            -Wglobal-constructors
             -Wmissing-noreturn
             -Wmissing-prototypes
             -Wno-missing-braces
             -Wold-style-cast
             -Wshadow
-            -Wweak-vtables
             -Werror
             -Wall
-            #-O3
+            -O3
     )
     target_link_libraries(${testname} cstr testlib)
     add_test(
