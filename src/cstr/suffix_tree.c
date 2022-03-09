@@ -3,6 +3,7 @@
 #include <stdalign.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <testlib.h>
 
 // We could put slices on the edges, but if we use ranges instead, we can encode
 // a leaf tag in the encoding of the range. Proper ranges will always have beg < end,
@@ -43,8 +44,8 @@ typedef struct inner_node { SHARED
     struct node *children[]; // children will be in a block of memory following the struct.
 } inner_node;
 
-static inline bool is_leaf(node const *node)  { return is_leaf_range(node->range); }
-static inline bool is_inner(node const *node) { return !is_leaf(node); }
+static inline bool is_leaf(node const *n)  { return is_leaf_range(n->range); }
+static inline bool is_inner(node const *n) { return !is_leaf(n); }
 // clang-format on
 
 // We use a pool (of sub-pools) to allocate inner nodes. We use sub-pools so we can grow
@@ -87,6 +88,8 @@ static void new_sub_pool(struct inner_node_pool *pool)
 
 static void init_pool(struct inner_node_pool *pool, long long sigma, long long n)
 {
+    (void)n; // unused parameter
+
     // First, figure out the size of memory blocks we need to store inner nodes.
     // A node will take up the space for the shared struct and sigma children
     size_t node_size = offsetof(struct inner_node, children) + ((size_t)sigma * sizeof(node *));
@@ -217,6 +220,8 @@ static inner_node *break_edge(cstr_suffix_tree *st, node *to, long long len)
 
 static inline node **get_children_begin(cstr_suffix_tree *st, node *n)
 {
+    (void)st; // Unused parameter
+
     return (n == 0 || is_leaf(n))
                // Leaves and NULL do not have any children
                ? 0
@@ -338,10 +343,9 @@ static void thread_nodes(cstr_suffix_tree *st)
     st->root->next = first_child(st, (node *)st->root);
 }
 
-static inline long long lcp(cstr_suffix_tree *st,
-                            node *node, cstr_const_sslice p)
+static inline long long lcp(cstr_suffix_tree *st, node *n, cstr_const_sslice p)
 {
-    return CSTR_SLICE_LCP(get_edge(st, node), p);
+    return CSTR_SLICE_LCP(get_edge(st, n), p);
 }
 
 // clang-format off
@@ -766,8 +770,6 @@ cstr_exact_matcher *cstr_st_exact_search_map(cstr_suffix_tree *st, cstr_const_ss
 }
 
 #ifdef GEN_UNIT_TESTS // unit testing of static functions...
-
-#include <testlib.h>
 
 TL_TEST(st_constructing_leaves)
 {
