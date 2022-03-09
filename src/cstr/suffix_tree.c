@@ -3,7 +3,6 @@
 #include <stdalign.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include <testlib.h>
 
 // We could put slices on the edges, but if we use ranges instead, we can encode
 // a leaf tag in the encoding of the range. Proper ranges will always have beg < end,
@@ -770,6 +769,8 @@ cstr_exact_matcher *cstr_st_exact_search_map(cstr_suffix_tree *st, cstr_const_ss
 }
 
 #ifdef GEN_UNIT_TESTS // unit testing of static functions...
+
+#include <testlib.h>
 
 TL_TEST(st_constructing_leaves)
 {
