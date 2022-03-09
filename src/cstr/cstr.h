@@ -411,41 +411,6 @@ CSTR_BUF_APPEND_PROTOTYPE(uislice, , unsigned int)
 
 // clang-format on
 
-// == BIT VECTOR ===================================================
-typedef struct
-{
-  long long no_bits;
-  long long no_words; // you can get this from no_bits, but no need for calculations each time
-  uint64_t words[];
-} cstr_bit_vector;
-
-#define CSTR_BV_WORD_IDX(BIT_IDX) ((BIT_IDX) >> 6)                 // bit divided by 64
-#define CSTR_BV_BIT_IDX(BIT_IDX) ((uint64_t)(BIT_IDX)&0x3f)        // bit % 64 (0x3f == 63)
-#define CSTR_BV_WORD(BV, BIT) ((BV)->words[CSTR_BV_WORD_IDX(BIT)]) // pick the word in the vector
-#define CSTR_BV_MASK(BIT) (1ull << CSTR_BV_BIT_IDX(BIT))           // mask for the right bit in the word
-
-void cstr_bv_clear(cstr_bit_vector *bv); // Set all bits to 0
-
-INLINE bool cstr_bv_get(cstr_bit_vector *bv, long long bit)
-{
-  return CSTR_BV_WORD(bv, bit) & CSTR_BV_MASK(bit);
-}
-INLINE void cstr_bv_set(cstr_bit_vector *bv, long long bit, bool val)
-{
-  uint64_t mask = CSTR_BV_MASK(bit);
-  uint64_t *word = &CSTR_BV_WORD(bv, bit);
-  *word = val ? (*word | mask) : (*word & ~mask);
-}
-
-cstr_bit_vector *cstr_new_bv(long long no_bits);
-cstr_bit_vector *cstr_new_bv_init(long long no_bits);
-cstr_bit_vector *cstr_new_bv_from_string(const char *bits);
-
-bool cstr_bv_eq(cstr_bit_vector *a, cstr_bit_vector *b);
-
-void cstr_bv_fprint(FILE *f, cstr_bit_vector *bv);
-#define cstr_bv_print(BV) cstr_bv_fprint(stdout, BV)
-
 // == ALPHABET =====================================================
 
 // Alphabets, for when we remap strings to smaller alphabets
@@ -496,29 +461,6 @@ INLINE long long cstr_exact_next_match(cstr_exact_matcher *self)   { return self
 INLINE void      cstr_free_exact_matcher(cstr_exact_matcher *self) { self->vtab->free(self); }
 // clang-format on
 
-cstr_exact_matcher *cstr_naive_matcher(cstr_const_sslice x, cstr_const_sslice p);
-cstr_exact_matcher *cstr_ba_matcher(cstr_const_sslice x, cstr_const_sslice p);
-cstr_exact_matcher *cstr_kmp_matcher(cstr_const_sslice x, cstr_const_sslice p);
-
-// == SUFFIX ARRAYS =====================================================
-// Suffix arrays stored in uislice objects can only handle lenghts
-// up to x.len <= UINT_MAX, and the caller must ensure that. We limit
-// ourselves to this size to save space. If we used size_t for the
-// values we would likely end up using twice as much memory, and unsigned
-// int is likely to be at least 32 bits which means that we can index
-// strings of length above four billion. That's most strings we are likely
-// to work with.
-typedef cstr_uislice cstr_suffix_array;
-
-// Suffix array construction.
-// slice x must be mapped to alphabet alpha and slice sa
-// must be same length of x. The result will be put
-// into sa.
-void cstr_skew(cstr_suffix_array sa, cstr_const_uislice x, cstr_alphabet *alpha);
-void cstr_sais(cstr_suffix_array sa, cstr_const_uislice x, cstr_alphabet *alpha);
-
-cstr_exact_matcher *cstr_sa_bsearch(cstr_suffix_array sa, cstr_const_sslice x, cstr_const_sslice p);
-
 // ==== Suffix trees ==============================================
 
 typedef struct cstr_suffix_tree cstr_suffix_tree;
@@ -538,42 +480,6 @@ void cstr_free_st_leaf_iter(cstr_st_leaf_iter *iter);
 // do the mapping itself.
 cstr_exact_matcher *cstr_st_exact_search(cstr_suffix_tree *st, cstr_const_sslice p);
 cstr_exact_matcher *cstr_st_exact_search_map(cstr_suffix_tree *st, cstr_const_sslice p);
-
-// ==== Burrows-Wheeler transform =================================
-
-void cstr_bwt(cstr_sslice bwt, cstr_const_sslice x, cstr_suffix_array sa);
-void cstr_reverse_bwt(cstr_sslice rev, cstr_const_sslice bwt, cstr_suffix_array sa);
-
-typedef struct cstr_bwt_preproc cstr_bwt_preproc; // Preprocessed tables for searching using FM-index
-// Does all the preprocessing, including mapping the alphabet, building the suffix array,
-// and building the tables for searching. You could save some time, if you already did
-// some of the preprocessing elsewhere, by writing a function that does somewhat less.
-cstr_bwt_preproc *cstr_bwt_preprocess(cstr_const_sslice x);
-
-// This matcher does not assume that p is already mapped. It does assume that you have built
-// the preproc tables.
-cstr_exact_matcher *cstr_fmindex_search(cstr_bwt_preproc *preproc, cstr_const_sslice p);
-
-void cstr_free_bwt_preproc(struct cstr_bwt_preproc *preproc);
-
-// ==== Li-Durbin approximative matching ==========================
-typedef struct cstr_li_durbin_preproc cstr_li_durbin_preproc;
-cstr_li_durbin_preproc *cstr_li_durbin_preprocess(cstr_const_sslice x);
-void cstr_free_li_durbin_preproc(cstr_li_durbin_preproc *preproc);
-
-typedef struct cstr_approx_match
-{
-  long long pos;     // -1 if no more matches
-  const char *cigar; // CIGAR, as a C string we can readily print.
-} cstr_approx_match;
-
-typedef struct cstr_approx_matcher cstr_approx_matcher;
-cstr_approx_matcher *cstr_li_durbin_search(cstr_li_durbin_preproc *preproc,
-                                           cstr_const_sslice p, long long d);
-cstr_approx_match cstr_approx_next_match(cstr_approx_matcher *matcher);
-void cstr_free_approx_matcher(cstr_approx_matcher *matcher);
-
-
 
 #undef INLINE
 #endif // CSTR_INCLUDED
